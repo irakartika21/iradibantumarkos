@@ -6,6 +6,9 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\OutletController;
 use App\Http\Controllers\PaketController;
+use App\Http\Controllers\MemberController;
+use App\Http\Controllers\TransaksiController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,14 +21,21 @@ use App\Http\Controllers\PaketController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::view('/', 'template.master');
+Route::view('/', 'home');
 
-Route::resource('outlet', OutletController::class);
-Route::resource('paket', PaketController::class);
+//outlet
+route::resource('outlet', OutletController::class)->middleware('auth', 'role:admin');
+
+//paket
+route::resource('paket', PaketController::class)->middleware('auth','role:admin');
+
+//member
+Route::resource('member', MemberController::class)->middleware('auth','role:admin,kasir');
+
+//transaksi
+Route::resource('transaksi',TransaksiController::class)->middleware('auth','role:admin');
+
 
 
 Route::get('register', [RegisterController::class, 'register'])->name('register')->middleware('guest');
@@ -37,7 +47,7 @@ Route::post('login', [LoginController::class, 'proses'])->name('login.proses')->
 Route::get('logout', [LoginController::class, 'logout'])->name('logout.admin');
 
 
-Route::get('dashboard/admin', [DashboardController::class, 'admin'])->name('dashboard.admin')->middleware('auth',);
-Route::get('dashboard/kasir', [DashboardController::class, 'kasir'])->name('dashboard.kasir')->middleware('auth',);
-Route::get('dashboard/owner', [DashboardController::class, 'owner'])->name('dashboard.owner')->middleware('auth');
+Route::get('dashboard/admin', [DashboardController::class, 'admin'])->name('dashboard.admin')->middleware('auth', 'role:admin');
+Route::get('dashboard/kasir', [DashboardController::class, 'kasir'])->name('dashboard.kasir')->middleware('auth', 'role:kasir');
+Route::get('dashboard/owner', [DashboardController::class, 'owner'])->name('dashboard.owner')->middleware('auth', 'role:owner');
 Route::view('error/403', 'error.403')->name('error.403');

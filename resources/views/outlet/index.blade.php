@@ -18,23 +18,28 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($outlets as $item)
+        @foreach ($outlets as $outlet)
         <tr>
             <td>{{ $loop->iteration }}</td>
-            <td>{{ $item->nama}}</td>
-            <td>{{ $item->alamat}}</td>
-            <td>{{ $item->telp }}</td>
+            <td>{{ $outlet->nama}}</td>
+            <td>{{ $outlet->alamat}}</td>
+            <td>{{ $outlet->telp }}</td>
         <td>
-            <form action="{{ route('outlet.destroy',[$item->id]) }}"method="POST">
-        <a class="btn btn-info mr-3" href="{{route('outlet.show', $item->id)}}"> 
-            detail
-        </a>
-        <a class="btn btn-warning mr-3" href="{{route('outlet.edit', $item->id)}}">
-            edit
-        </a>
-        @csrf
+        <form action="{{ route ('outlet.destroy', [$outlet->id])}}" method="POST">
+              <a class="btn btn-info mr-3" href="outlet/{{$outlet->id}}">
+                <i class="fas fa-info-circle"></i>
+                Detail
+              </a>
+              <a class="btn btn-warning mr-3" href="outlet/{{$outlet->id}}/edit">
+              <i class="far fa-edit"></i> 
+              Edit
+              </a>
+             @csrf
         @method('DELETE')
-        <button class="btn btn-danger ">Delete</button>
+        <button type="submit" class="btn btn-danger" value="Delete">
+           <i class="fas fa-solid fa-trash"></i>
+            Delete
+           </button>
         </form>
          </td>
         </tr>

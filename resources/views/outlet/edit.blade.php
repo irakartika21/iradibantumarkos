@@ -11,14 +11,14 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="/outlet/{{$outlets->id}}" method="POST">
+              <form action="/outlet/{{$outlet->id}}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="card-body">
                   <div class="form-group">
                   <label for="nama">Input nama</label>
                   <input type="text" name="nama" class="form-control" id="nama" placeholder="nama" 
-                  value="{{ $outlets->nama}}" required>
+                  value="{{ $outlet->nama}}" required>
                   @error('nama')
                         <div class="alert alert-danger">
                         {{$message}}
@@ -29,7 +29,7 @@
                   <div class="form-group">
                     <label for="inputalamat">Input alamat</label>
                     <input type="text" name="alamat" class="form-control" id="inputalamat" placeholder="Alamat"
-                    value="{{ $outlets->alamat}}" required>
+                    value="{{ $outlet->alamat}}" required>
                     @error('alamat')
                         <div class="alert alert-danger">
                         {{$message}}
@@ -40,7 +40,7 @@
                   <div class="form-group">
                   <label for="telp">Input telp</label>
                   <input type="text" name="telp" class="form-control" id="telp" placeholder="telp"
-                   value="{{ $outlets->telp}}" required>
+                   value="{{ $outlet->telp}}" required>
                    @error('telp')
                         <div class="alert alert-danger">
                         {{$message}}
@@ -55,7 +55,8 @@
                 Kembali
                 </a>
 
-                <button type="submit" class="btn btn-primary">Simpan data</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="reset" class="btn btn-primary">refresh</button>
                 </div>
               </form>
             </div>

@@ -9,11 +9,11 @@
               <form action="{{route('paket.index')}}" method="POST">
                 @csrf
               <div class="form-group">
-                <label>id_outlet</label>
+                <label>nama outlet</label>
               <select class="form-control" name="outlet_id" >
                  <option disabled selected>- Pilih Salah Satu -</option>
                     @foreach ($outlet as $item)
-                    <option value="{{ $item->id}}">{{ $item->id }}</option>
+                    <option value="{{ $item->id}}">{{ $item->nama . '|' . $item->alamat }}</option>
                     @endforeach
                   </select>
                 </div>
@@ -21,7 +21,7 @@
               <div class="form-group">
                 <label>Jenis</label>
                 <select class="form-control" name="jenis">
-                  <option disabled selected>- Pilih Salah Satu -</option>
+                  <option disabled selected>Jenis laundry</option>
                   <option value="kiloan">kiloan</option>
                   <option value="selimut">selimut</option>
                   <option value="bed_cover">bed cover</option>

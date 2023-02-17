@@ -8,4 +8,23 @@ use Illuminate\Database\Eloquent\Model;
 class Transaksi extends Model
 {
     use HasFactory;
+    protected $table = 'transaksis';
+    protected $fillable = [
+        'id', 'outlet_id', 'kode_invoice', 'member_id', 'tgl', 'batas_waktu', 'tgl_bayar', 'biaya_tambahan',
+        'diskon', 'pajak', 'status', 'dibayar', 'user_id'
+    ];
+
+    
+    public function outlet()
+    {
+        return $this_hasone('App\Models\Outlet', 'outlet_id');
+    }
+    public function user()
+    {
+        return $this_hasone('App\Models\User', 'user_id');
+    }
+    public function member()
+    {
+        return $this_hasone('App\Models\Member', 'member_id');
+    }
 }

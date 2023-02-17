@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ira Kartika | Halamanku</title>
+  <title>Cuciin | Laundry</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -143,10 +143,10 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-dark-dark elevation-4">
     <!-- Brand Logo -->
 
-      <span class="brand-text font-weight-light">Ira Kartika</span>
+      <span class="brand-text font-weight-dark"></span>
     </a>
 
     <!-- Sidebar -->
@@ -154,10 +154,10 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{ asset('adminlte/dist/img/iraa.jpg')}}" class="img-circle elevation-2" alt="User Image">
+          <img src="{{ asset('adminlte/dist/img/cuciin.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Laundry</a>
+          <a href="#" class="d-block">Cuciin | Laundry</a>
         </div>
       </div>
 
@@ -178,41 +178,74 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-header">Menu</li>
           <li class="nav-item">
-            <a href="{{ route('outlet.create')}}" class="nav-link">
-              <i class="nav-icon far fa-calendar-alt"></i>
+            <a href="/dashboard/admin" class="nav-link">
+              <i class="nav-icon fas fa-sharp fa-solid fa-user-tie"></i>
               <p>
-                Tambah data baru
-                <span class="badge badge-info right"></span>
+                Admin
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="../gallery.html" class="nav-link">
-              <i class="nav-icon far fa-image"></i>
+            <a href="/dashboard/kasir" class="nav-link">
+              <i class="nav-icon fas fa-sharp fa-solid fa-user-tie"></i>
               <p>
-                Item
+                Kasir
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-circle text-danger"></i>
-              <p class="text">Important</p>
+            <a href="/dashboard/owner" class="nav-link">
+              <i class="nav-icon fas fa-sharp fa-solid fa-user-tie"></i>
+              <p>
+                Owner
+              </p>
             </a>
           </li>
+          <li class="nav-header">WILAYAH OUTLET</li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-circle text-warning"></i>
-              <p>Laporan</p>
+            <a href="/outlet" class="nav-link">
+              <i class="nav-icon far fa-building"></i>
+              <p>
+                Outlet
+              </p>
             </a>
           </li>
+
+          <li class="nav-header">WILAYAH PAKET</li>
           <li class="nav-item">
-            <a href="{{ route('logout.admin')}}" class="nav-link">
-              <i class="nav-icon far fa-circle text-info"></i>
-              <p>logout</p>
+            <a href="/paket" class="nav-link">
+              <i class="nav-icon fas  fa-swatchbook"></i>
+              <p>
+                Paket
+              </p>
             </a>
+          </li>
+
+          <li class="nav-header">WILAYAH MEMBER</li>
+          <li class="nav-item">
+            <a href="/member" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Member
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-header">WILAYAH TRANSAKSI</li>
+          <li class="nav-item">
+            <a href="/transaksi" class="nav-link">
+              <i class="nav-icon fas fa-money-check"></i>
+              <p>
+                Transaksi
+              </p>
+            </a>
+          </li>
+          <br>
+            <li class="nav-item">
+                <a href="{{ route('logout.admin') }}" class="nav-link">
+                  <i class="nav icon fas fa-sign-out-alt"> Logout </i>
+                </a>
           </li>
         </ul>
       </nav>

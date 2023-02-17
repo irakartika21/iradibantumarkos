@@ -52,11 +52,12 @@
           </div>
         </div>
         <div class="form-group mb-3">
-        <select class="form-select" aria-label="Default select example" name="outlet_id" >
-        <option disabled selected>- Pilih Salah Satu -</option>
+        <select class="form-control" name="outlet_id" >
+                 <option disabled selected></option>
                     @foreach ($outlet as $item)
                     <option value="{{ $item->id}}">{{ $item->id }}</option>
                     @endforeach
+            </div>
                   </select>
         </div>
         <div class="row">
@@ -75,7 +76,7 @@
           <!-- /.col -->
         </div>
       </form>
-      <a href="login.html" class="text-center">Sudah ada Akun</a>
+      <a href="/login" class="text-center">Sudah ada Akun</a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->

@@ -18,7 +18,7 @@ class PaketController extends Controller
         //
         $paket = paket::all();
         $outlets = Outlet::all();
-        return view('paket.index', compact('paket', 'outlet'));
+        return view('paket.index', compact('paket', 'outlets'));
     }
 
     /**
@@ -44,16 +44,16 @@ class PaketController extends Controller
     {
         //
         $request->validate([
-            'outlet_id' => 'required',
-            'jenis' => 'required',
+            'outlet_id'  => 'required',
+            'jenis'      => 'required',
             'nama_paket' => 'required',
-            'harga' => 'required',
+            'harga'      => 'required',
         ]);
         paket::create([
-            'outlet_id' =>$request->outlet_id,
-            'jenis' =>$request->jenis,
+            'outlet_id'  =>$request->outlet_id,
+            'jenis'      =>$request->jenis,
             'nama_paket' =>$request->nama_paket,
-            'harga' =>$request->harga,
+            'harga'      =>$request->harga,
         ]);
         return redirect('/paket');
     }
@@ -67,6 +67,9 @@ class PaketController extends Controller
     public function show(Paket $paket)
     {
         //
+        $paket = paket::find($paket->id);
+        $outlets = Outlet::all();
+        return view('paket.show', compact('paket'));
     }
 
     /**
@@ -93,16 +96,16 @@ class PaketController extends Controller
     {
         //
         $request->validate([
-            'outlet_id' => 'required',
-            'jenis' => 'required',
+            'outlet_id'  => 'required',
+            'jenis'      => 'required',
             'nama_paket' => 'required',
-            'harga' => 'required',
+            'harga'      => 'required',
         ]);
             $paket = Paket::find($paket->id);
-            $paket->outlet_id = $request->outlet_id;
-            $paket->jenis = $request->jenis;
+            $paket->outlet_id  = $request->outlet_id;
+            $paket->jenis      = $request->jenis;
             $paket->nama_paket = $request->nama_paket;
-            $paket->harga = $request->harga;
+            $paket->harga      = $request->harga;
             $paket->update();
             return redirect('/paket');
     }
@@ -116,5 +119,8 @@ class PaketController extends Controller
     public function destroy(Paket $paket)
     {
         //
+        $paket = Paket::find($paket->id);
+        $paket->delete();
+        return redirect('/paket');
     }
 }

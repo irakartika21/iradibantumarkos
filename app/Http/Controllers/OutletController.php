@@ -41,15 +41,15 @@ class OutletController extends Controller
     {
         //
         $request->validate([
-            'nama' => 'required',
+            'nama'   => 'required',
             'alamat' => 'required',
-            'telp' => 'required'
+            'telp'   => 'required'
         ]);
 
         outlet::create([
-            'nama' => $request->nama,
+            'nama'   => $request->nama,
             'alamat' => $request->alamat,
-            'telp' => $request->telp
+            'telp'   => $request->telp
         ]);
         return redirect('/outlet');
     }
@@ -91,17 +91,17 @@ class OutletController extends Controller
     {
         //
         $request->validate([
-            'nama' => 'required',
+            'nama'   => 'required',
             'alamat' => 'required',
-            'telp' => 'required',
+            'telp'   => 'required',
         ]);
 
        $outlets = Outlet::find($outlet->id);
-       $outlets-> nama = $request-> nama;
+       $outlets-> nama   = $request-> nama;
        $outlets-> alamat = $request-> alamat;
-       $outlets-> telp = $request-> telp;
-       $outlets->update();
-       return redirect('/outlet');
+       $outlets-> telp   = $request-> telp;
+     $outlets->update();
+       return redirect('/outlet');  
     }
 
     /**
