@@ -117,17 +117,15 @@
                   </select>
 
                   <div class="form-group">
-                <label>Keterngan</label>
+                <label>Keterangan</label>
                 <select class="form-control" name="status">
                   <option disabled selected>Keterangan di bayar</option>
                   <option value="Dibayar">Dibayar</option>
                   <option value="Belum Diayar">Belum Dibayar</option>
                   </select>
               </div>
-              <button type="submit" class="btn btn-danger">Submit</button>
-                </div>
               </form>
             </div>
-              </a>
+            <button type="submit" class="btn btn-danger">Submit</button>
 </div>
 @endsection
