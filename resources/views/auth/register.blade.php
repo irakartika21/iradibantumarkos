@@ -16,15 +16,12 @@
 </head>
 <body class="hold-transition register-page">
 <div class="register-box">
-  <div class="card card-outline card-primary">
+<div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="../../index2.html" class="h1"><b>Register</b></a>
+      <a href="../../index2.html" class="h1"><b>Registration</b></a>
+          <img width="170" height="150"src="{{ asset('adminlte/dist/img/cuciin.jpg')}}">
     </div>
-
-    <div class="card">
     <div class="card-body">
-      <p class="login-box-msg">Register new membership</p>
-
       <form action="{{ route('register.proses')}}" method="post">
         @csrf
         <div class="input-group mb-3">

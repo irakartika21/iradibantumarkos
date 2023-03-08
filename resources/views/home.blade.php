@@ -79,16 +79,6 @@
                      <div class="lang_box ">
                      </div>
                      <div class="login_menu">
-                        <ul>
-                           <li><a href="{{ route('login.proses')}}">
-                              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                              <span class="padding_10">Login</span></a>
-                           </li>
-                           <li><a href="{{ route('register.proses')}}">
-                              <i class="fa fa-user" aria-hidden="true"></i>
-                              <span class="padding_10">Register</span></a>
-                           </li>
-                        </ul>
                      </div>
                   </div>
                </div>
@@ -104,7 +94,7 @@
                         <div class="row">
                            <div class="col-sm-12">
                               <h1 class="banner_taital">CUCIIN <br>Clean Your Shirt</h1>
-                              <div class="buynow_bt"><a href="{{ route('register.proses')}}">Clean Now</a></div>
+                              <div class="buynow_bt"><a href="{{ route('login.proses')}}">Clean Now</a></div>
                            </div>
                         </div>
                      </div>
@@ -112,7 +102,7 @@
                         <div class="row">
                            <div class="col-sm-12">
                               <h1 class="banner_taital">CUCIIN <br>Clean Your Shirt</h1>
-                              <div class="buynow_bt"><a href="{{ route('register.proses')}}">Clean Now</a></div>
+                              <div class="buynow_bt"><a href="{{ route('login.proses')}}">Clean Now</a></div>
                            </div>
                         </div>
                      </div>
@@ -120,7 +110,7 @@
                         <div class="row">
                            <div class="col-sm-12">
                               <h1 class="banner_taital">CUCIIN <br>Clean Your Shirt</h1>
-                              <div class="buynow_bt"><a href="{{ route('register.proses')}}">Clean Now</div>
+                              <div class="buynow_bt"><a href="{{ route('login.proses')}}">Clean Now</div>
                            </div>
                         </div>
                      </div>

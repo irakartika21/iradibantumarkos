@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Detail_Transaksi;
+use App\Models\DetailTransaksi;
+use App\Models\Transaksi;
+use App\Models\Paket;
 use Illuminate\Http\Request;
 
 class DetailTransaksiController extends Controller
@@ -15,6 +17,10 @@ class DetailTransaksiController extends Controller
     public function index()
     {
         //
+        $detailTransaksi = DetailTransaksi::all();
+        $transaksi       = Transaksi::all();
+        $paket           = Paket::all();
+        return view('detail_transaksi.index', compact('detailTransaksi','transaksi','paket'));
     }
 
     /**
@@ -25,6 +31,10 @@ class DetailTransaksiController extends Controller
     public function create()
     {
         //
+        $detailTransaksi = DetailTransaksi::all();
+        $transaksi       = Transaksi::all();
+        $paket           = Paket::all();
+        return view('detail_transaksi.create', compact('detailTransaksi','transaksi','paket'));
     }
 
     /**
@@ -33,18 +43,34 @@ class DetailTransaksiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $transaksi)
     {
         //
+        $request->validate([
+            'paket_id'  => 'required',
+            'qty'       => 'required'
+        ],
+        [
+            'paket_id.required' => 'Pilih Paket',
+            'qty.required'      => 'Isi Qty'
+        ]);
+
+        $detailTransaksi = new DetailTransaksi;
+        $detailTransaksi->transaksi_id  = $transaksi;
+        $detailTransaksi->paket_id      = $request->paket_id;
+        $detailTransaksi->qty           = $request->qty;
+        $detailTransaksi->save();
+
+        return redirect('/transaksi');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Detail_Transaksi  $detail_Transaksi
+     * @param  \App\Models\DetailTransaksi  $detailTransaksi
      * @return \Illuminate\Http\Response
      */
-    public function show(Detail_Transaksi $detail_Transaksi)
+    public function show(DetailTransaksi $detailTransaksi)
     {
         //
     }
@@ -52,10 +78,10 @@ class DetailTransaksiController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Detail_Transaksi  $detail_Transaksi
+     * @param  \App\Models\DetailTransaksi  $detailTransaksi
      * @return \Illuminate\Http\Response
      */
-    public function edit(Detail_Transaksi $detail_Transaksi)
+    public function edit(DetailTransaksi $detailTransaksi)
     {
         //
     }
@@ -64,10 +90,10 @@ class DetailTransaksiController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Detail_Transaksi  $detail_Transaksi
+     * @param  \App\Models\DetailTransaksi  $detailTransaksi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Detail_Transaksi $detail_Transaksi)
+    public function update(Request $request, DetailTransaksi $detailTransaksi)
     {
         //
     }
@@ -75,10 +101,10 @@ class DetailTransaksiController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Detail_Transaksi  $detail_Transaksi
+     * @param  \App\Models\DetailTransaksi  $detailTransaksi
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Detail_Transaksi $detail_Transaksi)
+    public function destroy(DetailTransaksi $detailTransaksi)
     {
         //
     }

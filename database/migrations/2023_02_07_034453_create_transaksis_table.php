@@ -23,7 +23,7 @@ class CreateTransaksisTable extends Migration
             $table->dateTime('tgl_bayar');
             $table->integer('biaya_tambahan');
             $table->double('diskon');
-            $table->integer('pajak');
+            $table->integer('pajak');   
             $table->enum('status', ['baru', 'proses', 'selesai', 'diambil']);
             $table->enum('dibayar', ['dibayar', 'belum_dibayar']);
             $table->foreignId('user_id')->constrained('users');
