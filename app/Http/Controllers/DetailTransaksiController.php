@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DetailTransaksi;
+use App\Models\Detail_Transaksi;
 use App\Models\Transaksi;
 use App\Models\Paket;
 use Illuminate\Http\Request;
@@ -17,7 +17,7 @@ class DetailTransaksiController extends Controller
     public function index()
     {
         //
-        $detailTransaksi = DetailTransaksi::all();
+        $detailTransaksi = Detail_Transaksi::all();
         $transaksi       = Transaksi::all();
         $paket           = Paket::all();
         return view('detail_transaksi.index', compact('detailTransaksi','transaksi','paket'));
@@ -31,10 +31,10 @@ class DetailTransaksiController extends Controller
     public function create()
     {
         //
-        $detailTransaksi = DetailTransaksi::all();
+        $detailTransaksi = Detail_Transaksi::all();
         $transaksi       = Transaksi::all();
-        $paket           = Paket::all();
-        return view('detail_transaksi.create', compact('detailTransaksi','transaksi','paket'));
+        $pakets           = Paket::all();
+        return view('detail_transaksi.create', compact('detailTransaksi','transaksi','pakets'));
     }
 
     /**
@@ -55,14 +55,23 @@ class DetailTransaksiController extends Controller
             'qty.required'      => 'Isi Qty'
         ]);
 
-        $detailTransaksi = new DetailTransaksi;
+        $detailTransaksi = new Detail_Transaksi;
         $detailTransaksi->transaksi_id  = $transaksi;
         $detailTransaksi->paket_id      = $request->paket_id;
         $detailTransaksi->qty           = $request->qty;
         $detailTransaksi->save();
 
-        return redirect('/transaksi');
+        return redirect()->route('transaksi.proses', compact('transaksi'));
     }
+    public function updateStatus(Request $request, $id)
+{
+    $transaksi = Transaksi::findOrFail($id);
+    $transaksi->status ='selesai';
+    $transaksi->dibayar ='dibayar';
+    $transaksi->save();
+
+    return redirect()->route('transaksi.proses', $transaksi);
+}
 
     /**
      * Display the specified resource.

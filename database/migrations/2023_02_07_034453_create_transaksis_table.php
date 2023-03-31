@@ -17,6 +17,9 @@ class CreateTransaksisTable extends Migration
             $table->id();
             $table->foreignId('outlet_id')->constrained('outlets');
             $table->string('kode_invoice', 100);
+            $table->string('harga')->nullable();
+            $table->string('subtotal');
+            $table->string('total');
             $table->foreignId('member_id')->constrained('members');
             $table->dateTime('tgl');
             $table->dateTime('batas_waktu');

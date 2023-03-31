@@ -45,6 +45,7 @@ Route::resource('transaksi', TransaksiController::class)->middleware('auth','rol
 
 //cetakinvoice
 Route::resource('invoice', InvoiceController::class)->middleware('auth','role:admin,kasir');
+Route::get('cetak/invoice', [InvoiceController::class, 'cetakinvoice'])->name('cetakinvoice');
 
 //transaksi
 Route::middleware(['auth', 'role:kasir'])->group(function(){
@@ -52,7 +53,9 @@ Route::middleware(['auth', 'role:kasir'])->group(function(){
     Route::get('transaksi/{transaksi}', [TransaksiController::class, 'edit'])->name('transaksi.proses');
     Route::post('transaksi/simpan', [TransaksiController::class, 'store'])->name('transaksi.store');
     Route::post('transaksi/{id}/detail', [DetailTransaksiController::class, 'store'])->name('transaksi.detail.store');
-    // Route::post('transaksi/', [TransaksiController::class, 'index'])->name('transaksi.index');
+    Route::patch('/transaksi/{id}/update-status', [DetailTransaksiController::class, 'updateStatus'])->name('transaksi.updateStatus');
+     Route::post('transaksi/', [TransaksiController::class, 'index'])->name('transaksi.index');
+     Route::post('/transaksi/updateStatus/{id}', [TransaksiController::class,'updateStatus'])->name('updateStatus');
 });
 
 

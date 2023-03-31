@@ -4,16 +4,24 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Paket;
 
 class Outlet extends Model
 {
     use HasFactory;
-    protected $table = 'Outlets';
-    protected $fillable =['nama', 'alamat', 'telp'];
-
-    public function Paket()
+    protected $table = 'outlets';
+    protected $fillable = [
+        'nama', 'alamat', 'telp'
+    ];
+    public function paket()
     {
-        return $this->belongsTo(Paket::class);
+        return $this->belongsTo('App\Models\Paket', 'paket');
+    }
+    public function detail_transaksis()
+    {
+        return $this->belongsTo('App\Models\DetailTransaksi', 'detail_transaksis');
+    }
+    public function transaksi()
+    {
+        return $this->belongsTo('App\Models\Transaksi', 'transaksi');
     }
 }

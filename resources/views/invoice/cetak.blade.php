@@ -1,8 +1,12 @@
-@extends('template.master')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laundry | Invoice Print</title>
 
-@section('content')
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+ <!-- Google Font: Source Sans Pro -->
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css')}}">
   <!-- Theme style -->
@@ -58,12 +62,12 @@
     <tr>
       <td class="th1">{{ $loop->iteration }}</td>
       <td class="th3">{{ $detail->paket->nama_paket }}</td>
-      <td class="th2">{{ $detail->paket->harga }}</td>
+      <td class="th2">{{ $detail->harga }}</td>
       <td class="th2">{{ $detail->qty }}</td>
-      <td class="th2">{{ $detail->paket->harga * $detail->qty }}</td> <!-- hasil perkalian -->
+      <td class="th2">{{ $detail->harga * $detail->qty }}</td> <!-- hasil perkalian -->
     </tr>
     @php
-    $total += $detail->paket->harga * $detail->qty; // menambahkan hasil perkalian pada variabel total
+    $total += $detail->harga * $detail->qty; // menambahkan hasil perkalian pada variabel total
     @endphp
     @endforeach
     <tr>
@@ -93,31 +97,29 @@
       </div>
       <!-- /.col -->
       <div class="col-6">
-        <p class="lead">Jenis Paket</p>
+        <p class="lead">Harga</p>
 
         <div class="table-responsive">
           <table class="table">
             <tr>
               <th style="width:50%">Kaos</th>
+              <td>Rp.2000</td>
             </tr>
             <tr>
               <th>Bed Cover</th>
+              <td>Rp.10.000</td>
             </tr>
             <tr>
               <th>Kiloan:</th>
+              <td>Rp.5000</td>
             </tr>
             <tr>
               <th>Selimut:</th>
+              <td>Rp.7000</td>
             </tr>
           </table>
         </div>
       </div>
-      <div class="row no-print">
-                <div class="col-12">
-                  <a href="{{route('cetakinvoice')}}" rel="noopener" target="_blank" class="btn btn-default">
-                    <i class="fas fa-print"></i> Print</a>
-</div>
-              </div>
             </div>
             <!-- /.invoice -->
           </div><!-- /.col -->
@@ -133,4 +135,6 @@
 <!-- Page specific script -->
 </body>
 </html>
-@endsection
+<script type="text/javascript">
+        window.print();
+    </script>

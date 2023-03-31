@@ -8,13 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 class Paket extends Model
 {
     use HasFactory;
-    protected $table = 'pakets';
-    protected $fillable =[
+
+    protected $table = "pakets";
+    protected $fillable = [
         'id', 'outlet_id', 'jenis', 'nama_paket', 'harga'
     ];
 
     public function outlet()
     {
-        return $this_hasone('App\Models\Outlet', 'outlet_id');
+        return $this->hasOne('App\Models\Outlet', 'id', 'outlet_id');
+    }
+    public function detail_transaksis()
+    {
+        return $this->belongsTo('App\Models\DetailTransaksi', 'detail_transaksis');
+    }
+    public function transaksi()
+    {
+        return $this->belongsTo('App\Models\Transaksi', 'transaksi');
     }
 }

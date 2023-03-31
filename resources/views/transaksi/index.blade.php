@@ -25,17 +25,19 @@
           <th>No</th>
           <th>Outlet Id</th>
           <th>Tanggal</th>
+          <th>harga</th>
           <th>Status</th>
           <th>Dibayar</th>
           <th>Action</th>
         </tr>
         </thead>
         <tbody>
-          @forelse($transaksis as $transaksi)
+          @forelse($transaksi as $transaksi)
          <tr>
           <td>{{ $loop->iteration }}</td>
           <td>{{ $transaksi->outlet_id }}</td>
           <td>{{ $transaksi->tgl }}</td>
+          <td>{{ $transaksi->harga }}</td>
           <td>{{ $transaksi->status }}</td>
           <td>{{ $transaksi->dibayar }}</td>
           <td>

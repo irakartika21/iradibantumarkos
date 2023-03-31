@@ -105,7 +105,7 @@
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="/transaksi" class="small-box-footer">GO<i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route('transaksi.baru') }}" class="small-box-footer">GO<i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           </div>

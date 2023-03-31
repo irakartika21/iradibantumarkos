@@ -54,20 +54,34 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([
-            'nama' => 'required',
-            'username' => 'required',
-            'password' => 'required',
+            $data = $request->validate([
+            'nama' => 'required|unique:users,nama|min:3|max:50',
+            'username' => 'required|unique:users,username|max:15',
             'role' => 'required',
+            'password' => 'required|min:4',
             'outlet_id' => 'required',
+        ],  
+        [
+            'nama.required' => 'Nama tidak boleh kosong',
+            'nama.min' => 'Nama terlalu pendek',
+            'nama.unique' => 'Nama sudah terdaftar',
+            'username.required' => 'Username tidak boleh kosong',
+            'role.required' => 'role tidak boleh kosong',
+            'username.unique' => 'Username sudah terdaftar',
+            'username.max' => 'Username terlalu panjang',
+            'password.required' => 'Password tidak boleh kosong',
+            'password.min' => 'Password terlalu pendek',
+            'outlet_id' => 'tidak boleh kosong',
+        ]
+    );
+
+        User::create([
+            'nama' => ($data['nama']),
+            'username' => ($data['username']),
+            'role' => ($data['role']),
+            'password' => bcrypt($data['password']), 
+            'outlet_id' => $request->outlet_id,
         ]);
-            User::create([
-                'nama' => $request->nama,
-                'username' => $request->username,
-                'password' => bcrypt('password'),
-                'role' => $request->role,
-                'outlet_id' => $request->outlet_id,
-            ]);
             return redirect()->route('user.index');
     }
 
