@@ -55,6 +55,7 @@
     $total = 0; // inisialisasi variabel total
     @endphp
     @foreach($details as $detail)
+  @if($detail->transaksi->member_id == 1) <!-- hanya menampilkan data untuk member dengan ID 1 -->
     <tr>
       <td class="th1">{{ $loop->iteration }}</td>
       <td class="th3">{{ $detail->paket->nama_paket }}</td>
@@ -63,9 +64,11 @@
       <td class="th2">{{ $detail->paket->harga * $detail->qty }}</td> <!-- hasil perkalian -->
     </tr>
     @php
-    $total += $detail->paket->harga * $detail->qty; // menambahkan hasil perkalian pada variabel total
+      $total += $detail->paket->harga * $detail->qty; // menambahkan hasil perkalian pada variabel total
     @endphp
-    @endforeach
+  @endif
+@endforeach
+
     <tr>
       <td colspan="4" class="text-right"><b>Total</b></td>
       <td class="th2 text-left"><b>{{ $total }}</b></td> <!-- menampilkan nilai total -->

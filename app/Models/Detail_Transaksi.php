@@ -11,7 +11,7 @@ class Detail_transaksi extends Model
     use HasFactory;
     protected $table = "detail__transaksis";
     protected $fillable = [
-        'id', 'transaksi_id', 'paket_id', 'qty'
+        'id', 'transaksi_id', 'paket_id', 'qty','subtotal'
     ];
     public function outlet()
     {
@@ -25,12 +25,17 @@ class Detail_transaksi extends Model
     {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
-    public function paket()
-    {
-        return $this->hasOne('App\Models\Paket', 'id', 'paket_id');
-    }
     public function transaksi()
     {
         return $this->belongsTo(Transaksi::class);
+    }
+    public function paket()
+    {
+    return $this->belongsTo(Paket::class);
+    }
+
+    public function hitungSubtotal()
+    {
+    return $this->paket->harga * $this->qty;
     }
 }
